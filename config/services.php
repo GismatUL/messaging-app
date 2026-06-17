@@ -30,5 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'insider' => [
+        'webhook_url' => env('INSIDER_WEBHOOK_URL'),
+        'auth_key' => env('INSIDER_AUTH_KEY'),
+    ],
 
 ];
