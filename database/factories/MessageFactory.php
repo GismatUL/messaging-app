@@ -17,7 +17,11 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'phone' => fake()->e164PhoneNumber(),
+            'content' => fake()->sentence(8),
+            'is_sent' => false,
+            'external_message_id' => null,
+            'sent_at' => null,
         ];
     }
 }
