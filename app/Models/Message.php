@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Message extends Model
 {
@@ -21,4 +22,14 @@ class Message extends Model
             'is_sent' => 'boolean',
             'sent_at' => 'datetime',
         ];
+
+        public function scopePending(Builder $query): Builder
+        {
+            return $query->where('is_sent', false);
+        }
+
+        public function scopeSent(Builder $query): Builder
+        {
+            return $query->where('is_sent', true);
+        }
 }
