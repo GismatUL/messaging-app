@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Message;
 use App\Repositories\Contracts\MessageRepositoryInterface;
 use Illuminate\Support\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class MessageRepository implements MessageRepositoryInterface
 {
@@ -26,5 +27,13 @@ class MessageRepository implements MessageRepositoryInterface
         ]);
 
         return $message->refresh();
+    }
+
+    public function getSentMessages(int $perPage = 15): LengthAwarePaginator
+    {
+        return Message::query()
+            ->sent()
+            ->latest('sent_at')
+            ->paginate($perPage);
     }
 }
