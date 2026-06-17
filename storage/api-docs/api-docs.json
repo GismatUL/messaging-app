@@ -1,0 +1,36 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Messaging API",
+        "description": "API documentation for Laravel messaging assessment project",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local Docker environment"
+        }
+    ],
+    "paths": {
+        "/api/v1/messages/sent": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get sent messages",
+                "operationId": "438d5b5198ad9a24182c8ef99b2c2d9b",
+                "responses": {
+                    "200": {
+                        "description": "List of sent messages"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Messages",
+            "description": "Messages"
+        }
+    ]
+}
