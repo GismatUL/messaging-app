@@ -50,13 +50,15 @@ class MessageService
 
     private function cacheSentMessage(Message $message): void
     {
+        $ttlDays = config('messages.cache_ttl_days', 7);
+
         Cache::store('redis')->put(
             "sent_message:{$message->id}",
             [
                 'message_id' => $message->external_message_id,
                 'sent_at' => $message->sent_at?->toISOString(),
             ],
-            now()->addDays(7)
+            now()->addDays($ttlDays)
         );
     }
 }
